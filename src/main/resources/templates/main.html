@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Цель
+<select name="select" id="purpose"> <!--Supplement an id here instead of using 'name'-->
+    <option value="-300">похудение</option>
+    <option value="0">поддержание веса</option>
+    <option value="300">набор массы</option>
+</select>
+Рост <input id="height">
+Вес <input id="weight">
+Возраст <input id="age">
+Пол
+<select name="select" id="sex"> <!--Supplement an id here instead of using 'name'-->
+    <option value="-161">женский</option>
+    <option value="5">мужской</option>
+</select>
+<br>
+Тип питания
+<select name="select" id="typeOfFood"> <!--Supplement an id here instead of using 'name'-->
+    <option value="stand">Стандартный</option>
+    <option value="proteins">Высокобелковое</option>
+    <option value="fats">Кето</option>
+    <option value="carbohydrate">Высокоуглеводная</option>
+</select>
+
+Цель <select name="select" id="activity"> <!--Supplement an id here instead of using 'name'-->
+    <option value="1.2">Физическая нагрузка отсутсвует или минимальная</option>
+    <option value="1.38">Тренировки средней тяжести 3 раза в неделю</option>
+    <option value="1.46">Тренировки средней тяжести 5 раза в неделю</option>
+    <option value="1.55">Интенсивные трениврока 5 раз в неделю</option>
+    <option value="1.65">Тренировки средней тяжести каждый день</option>
+    <option value="1.73">Интенсивные тренировки каждый день</option>
+</select>
+
+<br>
+<button onclick= f()>Расчет</button>
+<p id="result"> </p>
+
+</body>
+<script>
+    function f() {
+
+        let purposeValue = document.getElementById("purpose").value;
+        let activityValue = document.getElementById("activity").value;
+        let weightValue = document.getElementById("weight").value;
+        let heightValue = document.getElementById("height").value;
+        let ageValue = document.getElementById("age").value;
+        let sexValue = document.getElementById("sex").value;
+        result = (parseFloat(activityValue) * (10 * parseInt(weightValue)) + (6.25 * parseInt(heightValue))
+            - (5 * parseInt(ageValue)) + parseInt(sexValue)) + parseInt(purposeValue);
+
+        alert(result);
+
+        $.ajax({
+            url: "/search",
+            type: 'GET',
+            data: {result: result
+            //список продуктов
+            },
+            dataType: "json",
+            success: function (code) {
+                console.log(code);
+                 },
+            error: function () {
+                var status = document.getElementById("status");
+                status.style.display = "inline";
+            }
+        });
+
+    }
+
+</script>
+</html>

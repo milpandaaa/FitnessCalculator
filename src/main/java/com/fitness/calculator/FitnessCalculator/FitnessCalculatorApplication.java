@@ -1,5 +1,6 @@
 package com.fitness.calculator.FitnessCalculator;
 
+import com.fitness.calculator.FitnessCalculator.repositories.ProductRepository;
 import org.apache.commons.math3.optim.linear.LinearConstraint;
 import org.apache.commons.math3.optim.linear.Relationship;
 import org.springframework.boot.SpringApplication;
@@ -13,20 +14,21 @@ import java.util.ArrayList;
 public class FitnessCalculatorApplication {
 
 	public static void main(String[] args) {
-		ArrayList<LinearConstraint> arrayList = new ArrayList<>();
-		int quantity = 3;
-		arrayList.add(new LinearConstraint(new double[] { -1, 1, 4}, Relationship.LEQ, 2));
-		arrayList.add(new LinearConstraint(new double[] { 1, -3, 2}, Relationship.LEQ, 3));
-		arrayList.add(new LinearConstraint(new double[] { 1, 1, 2}, Relationship.LEQ, 5));
+//		ArrayList<LinearConstraint> arrayList = new ArrayList<>();
+//		int quantity = 3;
+//		arrayList.add(new LinearConstraint(new double[] { -1, 1, 4}, Relationship.LEQ, 2));
+//		arrayList.add(new LinearConstraint(new double[] { 1, -3, 2}, Relationship.LEQ, 3));
+//		arrayList.add(new LinearConstraint(new double[] { 1, 1, 2}, Relationship.LEQ, 5));
+//
+//		for (int k = 0; k<quantity; k++) {
+//			double arrayDefaultedToTen[] = new double[quantity];
+//			arrayDefaultedToTen[k] = 1;
+//			arrayList.add(new LinearConstraint(arrayDefaultedToTen, Relationship.GEQ, 0));
+//		}
+//
+//		MainController.simplexMethod(new double[] {1, -1, 2},arrayList);
 
-		for (int k = 0; k<quantity; k++) {
-			double arrayDefaultedToTen[] = new double[quantity];
-			arrayDefaultedToTen[k] = 1;
-			arrayList.add(new LinearConstraint(arrayDefaultedToTen, Relationship.GEQ, 0));
-		}
-
-		Controller.simplexMethod(new double[] {1, -1, 2},arrayList);
-//		SpringApplication.run(FitnessCalculatorApplication.class, args);
+		SpringApplication.run(FitnessCalculatorApplication.class, args);
 
 	}
 
